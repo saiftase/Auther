@@ -17,6 +17,13 @@ app.factory('AuthorizationFactory', function ($http) {
       data: obj
     });
   };
+
+  AuthorizationFactory.logout = function () {
+    return $http({
+      method: 'POST',
+      url: 'api/logout'
+    });
+  };
   
 
   return AuthorizationFactory;

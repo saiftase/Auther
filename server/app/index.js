@@ -18,7 +18,6 @@ app.use(session({ secret: 'tongiscool' }));
 app.use('/api', require('../api/api.router'));
 
 
-
 //Session Visit Counter
 // app.use(function (req, res, next) {
 //   if (!req.session.counter) req.session.counter = 0;
@@ -27,10 +26,10 @@ app.use('/api', require('../api/api.router'));
 // });
 
 // Log Session Variable
-// app.use(function (req, res, next) {
-//     console.log('session', req.session);
-//     next();
-// });
+app.use(function (req, res, next) {
+    console.log('session', req.session);
+    next();
+});
 
 var validFrontendRoutes = ['/', '/stories', '/users', '/stories/:id', '/users/:id', '/signup', '/login'];
 var indexPath = path.join(__dirname, '..', '..', 'public', 'index.html');

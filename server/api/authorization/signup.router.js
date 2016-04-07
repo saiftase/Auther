@@ -1,5 +1,5 @@
 var router = require('express').Router(),
-	User = require('./users/user.model');
+	User = require('../users/user.model');
 
 router.post('/', function(req, res, next){
 	User.create({
@@ -10,11 +10,10 @@ router.post('/', function(req, res, next){
 		if(!user){
 			res.sendStatus(401);
 		}else{
-			console.log(req.session);
 			req.session.userId = user._id;
 			res.sendStatus(200);
 		}
 	}).then(null, next);
 })
 
-module.exports = router;
+module.exports = router; 
