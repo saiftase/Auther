@@ -1,7 +1,8 @@
 <div class="container story-container">
+
 	<ul class="list-inline large-font">
 		<li>
-			<span contenteditable
+			<span contenteditable="{{currentUserExists()}}"
 				  class="large-font"
 				  ng-model="story.title"
 				  ng-model-options="{debounce: 500}"></span>
@@ -14,7 +15,7 @@
 		</li>
 	</ul>
 	<br>
-	<p contenteditable
+	<p contenteditable="{{currentUserExists()}}"
 		ng-model="story.paragraphs"
 		ng-model-options="{debounce: 500}"
 		ng-list="<br><br>"

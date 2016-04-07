@@ -5,7 +5,8 @@ var path = require('path');
 var session = require('express-session');
 var chalk = require('chalk');
 
-app.use(require('body-parser').urlencoded({extended: false}))
+// app.use(require('body-parser').json);
+app.use(require('body-parser').urlencoded({extended: false}));
 
 app.use(require('./logging.middleware'));
 
