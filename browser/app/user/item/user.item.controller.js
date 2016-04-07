@@ -1,17 +1,11 @@
-'use strict';
-
-app.controller('StoryDetailCtrl', function ($scope, story, users, AuthorizationFactory) {
-	$scope.story = story;
-	$scope.users = users;
-	$scope.$watch('story', function () {
-		$scope.story.save();
-	}, true);
-
+app.controller('UserItemCtrl', function ($scope, AuthorizationFactory) {
 	$scope.currentUser = undefined;
 	AuthorizationFactory.getCurrentUser()
 	.then(function(data){
 		$scope.currentUser = data;
 	})
+
+	console.log($scope);
 
 	$scope.currentUserExists = function(){
 		if($scope.currentUser){

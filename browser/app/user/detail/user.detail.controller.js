@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserDetailCtrl', function ($scope, user, Story) {
+app.controller('UserDetailCtrl', function ($scope, user, Story, AuthorizationFactory) {
 	$scope.user = user;
 	$scope.newStory = new Story({author: $scope.user});
 	$scope.addStory = function () {
@@ -17,4 +17,23 @@ app.controller('UserDetailCtrl', function ($scope, user, Story) {
 			$scope.user.stories.splice(idx, 1);
 		});
 	};
+
+	$scope.currentUser = undefined;
+	AuthorizationFactory.getCurrentUser()
+	.then(function(data){
+		$scope.currentUser = data;
+	})
+
+	$scope.currentUserExists = function(){
+		if($scope.currentUser){
+			return true;
+		}
+
+		return false;
+	}
+
+	$scope.CurrentUserIsAdmin = function(){
+		return $scope.currentUser.isAdmin;
+	}
+
 });

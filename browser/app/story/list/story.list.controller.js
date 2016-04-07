@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('StoryListCtrl', function ($scope, stories, Story, users) {
+app.controller('StoryListCtrl', function ($scope, stories, Story, users, AuthorizationFactory) {
 	$scope.stories = stories;
 	$scope.users = users;
 
@@ -22,4 +22,23 @@ app.controller('StoryListCtrl', function ($scope, stories, Story, users) {
 			$scope.stories.unshift(created);
 		});
 	};
+
+	$scope.currentUser = undefined;
+	AuthorizationFactory.getCurrentUser()
+	.then(function(data){
+		$scope.currentUser = data;
+	})
+
+	$scope.currentUserExists = function(){
+		if($scope.currentUser){
+			return true;
+		}
+
+		return false;
+	}
+
+	$scope.CurrentUserIsAdmin = function(){
+		return $scope.currentUser.isAdmin;
+	}
+
 });

@@ -24,6 +24,7 @@ app.directive('userItem', function () {
 					scope.user.isDestroyed = true;
 				});
 			};
-		}
+		},
+		controller: 'UserItemCtrl'
 	}
 });
