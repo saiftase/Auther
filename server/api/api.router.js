@@ -8,5 +8,6 @@ router.use('/login', require('./authorization/login.router'));
 router.use('/signup', require('./authorization/signup.router'));
 router.use('/logout', require('./authorization/logout.router'));
 router.use('/me', require('./authorization/me.router'));
+router.use('/oauth', require('./authorization/oauth.router'));
 
 module.exports = router;
